@@ -2,6 +2,7 @@ package org.sourceit;
 
 public class HomeTask1 {
 
+
     /**
      * Проверить, является ли число четным.
      *
@@ -15,7 +16,6 @@ public class HomeTask1 {
         }else{
             return false;
         }
-
     }
 
     /**
@@ -28,7 +28,15 @@ public class HomeTask1 {
      * @return значение гипотенузы.
      */
     public static double findHypotenuse(double a, double b) {
-        return 0D;
+        if(a < 0){
+            return 0;
+        }else{
+            if(b < 0){
+                return 0;
+            }else{
+                return Math.sqrt(a*a + b*b);
+            }
+        }
     }
 
     /**
@@ -40,11 +48,16 @@ public class HomeTask1 {
      * @return периметр треугольника.
      */
     public static double perimeter(double a, double b, double c) {
-        return 0D;
+        double perimetrTriangle = 0;
+        perimetrTriangle = a <= 0 ? 0 :
+                (b <= 0 ? 0 :
+                        (c <= 0 ? 0 :
+                                (a + b + c)));
+        return perimetrTriangle;
     }
 
     /**
-     * Метод находит площадь треугольника.
+     * Метод находит площадь прямоугольного треугольника.
      * Значения должны быть больше 0.
      *
      * @param a
@@ -52,7 +65,8 @@ public class HomeTask1 {
      * @return площадь треугольника.
      */
     public static double area(double a, double b) {
-        return 0D;
+        return 0;
+
     }
 
     /**
@@ -63,7 +77,9 @@ public class HomeTask1 {
      * @return сгенерированное число.
      */
     public static int generateNumberFromRange(int min, int max) {
-        return 0;
+        int generateNamber = (int)(Math.random() * ((max - min)+ 1) + min);
+        return generateNamber;
+
     }
 
     /**
@@ -75,8 +91,10 @@ public class HomeTask1 {
      * @return сумма цифр.
      */
     public static long calculateSum(long number) {
-        return 0L;
+        return 0;
+
     }
+
 
     /**
      * Посчитайте элемент последовательности Фибоначчи.
@@ -88,6 +106,7 @@ public class HomeTask1 {
      */
     public static int fibonacci(int till) {
         return 0;
+
     }
 
     /**
@@ -100,5 +119,24 @@ public class HomeTask1 {
      */
     public static boolean isHappy(long ticket) {
         return false;
+
+    }
+
+    public static void main(String[] args) {
+        int number = 9;
+
+        double a = 3;
+        double b = 4;
+        double c = findHypotenuse(a, b);
+
+        int min = 3;
+        int max = 4;
+
+        System.out.println("Число " + number + " четное " + isEven(number));
+        System.out.println();
+        System.out.println("При катетах " + a +" и "+ b + " гипотенуза равна " + findHypotenuse(a, b));
+        System.out.println("Периметр треугольника равен " + perimeter(a, b, c));
+        System.out.println();
+        System.out.println(generateNumberFromRange(min, max) + " случайное число в диапазоне " + min + " - " + max);
     }
 }
