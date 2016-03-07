@@ -79,8 +79,6 @@ public class HomeTask1 {
                 return (semiperimeter - a) * (semiperimeter - b);
             }
         }
-
-
     }
 
     /**
