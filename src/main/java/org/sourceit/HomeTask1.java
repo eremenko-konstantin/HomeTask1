@@ -2,7 +2,6 @@ package org.sourceit;
 
 public class HomeTask1 {
 
-
     /**
      * Проверить, является ли число четным.
      *
