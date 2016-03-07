@@ -143,8 +143,30 @@ public class HomeTask1 {
      * @return является ли билет счастливым.
      */
     public static boolean isHappy(long ticket) {
-        return false;
-
+        if(ticket < 1){
+            return false;
+        }
+        else if(ticket > 999999){
+            return false;
+        }
+        else {
+            int leftSum = 0;
+            int rightSum = 0;
+            for(int a = 0; a < 3; a++) {
+                rightSum += (ticket % 10);
+                ticket /= 10;
+            }
+            for(int a = 0; a < 3; a++) {
+                leftSum += (ticket % 10);
+                ticket /= 10;
+            }
+            if(leftSum == rightSum) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -159,16 +181,15 @@ public class HomeTask1 {
 
         int till = 2;
 
+        long ticket = 999999;
+
 //        System.out.println("Число " + number + " четное " + isEven(number));
-        System.out.println();
         System.out.println("При катетах " + a +" и "+ b + " гипотенуза равна " + findHypotenuse(a, b));
         System.out.println("Периметр треугольника равен " + perimeter(a, b, c));
         System.out.println("Площадь треугольника равна " + area(a, b));
-        System.out.println();
         System.out.println(generateNumberFromRange(min, max) + " случайное число в диапазоне " + min + " - " + max);
-        System.out.println();
-        System.out.println(calculateSum(number));
-        System.out.println();
-        System.out.println(fibonacci(till));
+        System.out.println("Cумма цифр числа = " + calculateSum(number));
+        System.out.println("Элемент последовательности " + fibonacci(till));
+        System.out.println("Билет счастливый " + isHappy(ticket));
     }
 }
