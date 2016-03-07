@@ -10,10 +10,10 @@ public class HomeTask1 {
      * @return является ли число четным.
      */
     public static boolean isEven(int number) {
-        int res = number;
         if(number % 2 == 0){
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
@@ -28,12 +28,14 @@ public class HomeTask1 {
      * @return значение гипотенузы.
      */
     public static double findHypotenuse(double a, double b) {
-        if(a < 0){
+        if(a <= 0){
             return 0;
-        }else{
-            if(b < 0){
+        }
+        else{
+            if(b <= 0){
                 return 0;
-            }else{
+            }
+            else{
                 return Math.sqrt(a*a + b*b);
             }
         }
@@ -65,7 +67,19 @@ public class HomeTask1 {
      * @return площадь треугольника.
      */
     public static double area(double a, double b) {
-        return 0;
+        if(a <= 0){
+            return 0;
+        }
+        else{
+            if(b <= 0){
+                return 0;
+            }
+            else{
+                double semiperimeter = perimeter(a, b, findHypotenuse(a, b))/2;
+                return (semiperimeter - a) * (semiperimeter - b);
+            }
+        }
+
 
     }
 
@@ -77,9 +91,7 @@ public class HomeTask1 {
      * @return сгенерированное число.
      */
     public static int generateNumberFromRange(int min, int max) {
-        int generateNamber = (int)(Math.random() * ((max - min)+ 1) + min);
-        return generateNamber;
-
+        return (int) (Math.random() * (max - min + 1) + min);
     }
 
     /**
@@ -130,13 +142,15 @@ public class HomeTask1 {
         double c = findHypotenuse(a, b);
 
         int min = 3;
-        int max = 4;
+        int max = 5;
 
         System.out.println("Число " + number + " четное " + isEven(number));
         System.out.println();
         System.out.println("При катетах " + a +" и "+ b + " гипотенуза равна " + findHypotenuse(a, b));
         System.out.println("Периметр треугольника равен " + perimeter(a, b, c));
+        System.out.println("Площадь треугольника равна " + area(a, b));
         System.out.println();
         System.out.println(generateNumberFromRange(min, max) + " случайное число в диапазоне " + min + " - " + max);
+
     }
 }
