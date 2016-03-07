@@ -105,7 +105,6 @@ public class HomeTask1 {
 
     }
 
-
     /**
      * Посчитайте элемент последовательности Фибоначчи.
      * Первый и второй члены последовательности равны единицам,
@@ -115,8 +114,16 @@ public class HomeTask1 {
      * @return элемент последовательности.
      */
     public static int fibonacci(int till) {
-        return 0;
-
+        int fibValue = 1;
+        int firstValue = 1;
+        int secondValue = 1;
+        while(till > 2){
+            fibValue = secondValue + firstValue;
+            firstValue = secondValue;
+            secondValue = fibValue;
+            till = --till;
+        }
+        return fibValue;
     }
 
     /**
@@ -142,6 +149,8 @@ public class HomeTask1 {
         int min = 3;
         int max = 5;
 
+        int till = 20;
+
         System.out.println("Число " + number + " четное " + isEven(number));
         System.out.println();
         System.out.println("При катетах " + a +" и "+ b + " гипотенуза равна " + findHypotenuse(a, b));
@@ -149,6 +158,7 @@ public class HomeTask1 {
         System.out.println("Площадь треугольника равна " + area(a, b));
         System.out.println();
         System.out.println(generateNumberFromRange(min, max) + " случайное число в диапазоне " + min + " - " + max);
-
+        System.out.println();
+        System.out.println(fibonacci(till));
     }
 }
