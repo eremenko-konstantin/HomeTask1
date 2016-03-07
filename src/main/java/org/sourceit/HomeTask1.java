@@ -110,7 +110,6 @@ public class HomeTask1 {
             number /= 10;
         }
         return sum;
-
     }
 
     /**
@@ -171,16 +170,12 @@ public class HomeTask1 {
 
     public static void main(String[] args) {
         long number = -1234L;
-
         double a = 3;
         double b = 4;
         double c = findHypotenuse(a, b);
-
         int min = 3;
         int max = 5;
-
         int till = 2;
-
         long ticket = 999999;
 
 //        System.out.println("Число " + number + " четное " + isEven(number));
