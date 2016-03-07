@@ -101,7 +101,15 @@ public class HomeTask1 {
      * @return сумма цифр.
      */
     public static long calculateSum(long number) {
-        return 0;
+        long sum = 0;
+        if(number < 0){
+            number *= -1;
+        }
+        while(number != 0){
+            sum += (number % 10);
+            number /= 10;
+        }
+        return sum;
 
     }
 
@@ -117,7 +125,7 @@ public class HomeTask1 {
         int fibValue = 1;
         int firstValue = 1;
         int secondValue = 1;
-        while(till > 2){
+        while(till > 1){
             fibValue = secondValue + firstValue;
             firstValue = secondValue;
             secondValue = fibValue;
@@ -140,7 +148,7 @@ public class HomeTask1 {
     }
 
     public static void main(String[] args) {
-        int number = 9;
+        long number = -1234L;
 
         double a = 3;
         double b = 4;
@@ -149,15 +157,17 @@ public class HomeTask1 {
         int min = 3;
         int max = 5;
 
-        int till = 20;
+        int till = 2;
 
-        System.out.println("Число " + number + " четное " + isEven(number));
+//        System.out.println("Число " + number + " четное " + isEven(number));
         System.out.println();
         System.out.println("При катетах " + a +" и "+ b + " гипотенуза равна " + findHypotenuse(a, b));
         System.out.println("Периметр треугольника равен " + perimeter(a, b, c));
         System.out.println("Площадь треугольника равна " + area(a, b));
         System.out.println();
         System.out.println(generateNumberFromRange(min, max) + " случайное число в диапазоне " + min + " - " + max);
+        System.out.println();
+        System.out.println(calculateSum(number));
         System.out.println();
         System.out.println(fibonacci(till));
     }
