@@ -110,7 +110,7 @@ public class HomeTask1 {
             fibValue = secondValue + firstValue;
             firstValue = secondValue;
             secondValue = fibValue;
-            till = --till;
+            --till;
         }
         return fibValue;
     }
