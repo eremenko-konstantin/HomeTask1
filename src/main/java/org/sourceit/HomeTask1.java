@@ -2,6 +2,7 @@ package org.sourceit;
 
 public class HomeTask1 {
 
+
     /**
      * Проверить, является ли число четным.
      *
@@ -9,12 +10,7 @@ public class HomeTask1 {
      * @return является ли число четным.
      */
     public static boolean isEven(int number) {
-        if(number % 2 == 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return number % 2 == 0;
     }
 
     /**
@@ -27,17 +23,10 @@ public class HomeTask1 {
      * @return значение гипотенузы.
      */
     public static double findHypotenuse(double a, double b) {
-        if(a <= 0){
+        if(a <= 0 || b <=0){
             return 0;
         }
-        else{
-            if(b <= 0){
-                return 0;
-            }
-            else{
-                return Math.sqrt(a*a + b*b);
-            }
-        }
+        return Math.sqrt(a*a + b*b);
     }
 
     /**
@@ -50,10 +39,10 @@ public class HomeTask1 {
      */
     public static double perimeter(double a, double b, double c) {
         double perimetrTriangle = 0;
-        perimetrTriangle = a <= 0 ? 0 :
-                (b <= 0 ? 0 :
-                        (c <= 0 ? 0 :
-                                (a + b + c)));
+        if(a <= 0 || b <= 0 || c <= 0 ){
+            return perimetrTriangle;
+        }
+        perimetrTriangle = a + b + c;
         return perimetrTriangle;
     }
 
@@ -66,18 +55,12 @@ public class HomeTask1 {
      * @return площадь треугольника.
      */
     public static double area(double a, double b) {
-        if(a <= 0){
+        if(a <= 0 || b <= 0){
             return 0;
         }
-        else{
-            if(b <= 0){
-                return 0;
-            }
-            else{
-                double semiperimeter = perimeter(a, b, findHypotenuse(a, b))/2;
-                return (semiperimeter - a) * (semiperimeter - b);
-            }
-        }
+        double c = Math.sqrt(a * a + b * b);
+        double semiPer = (a + b + c) / 2;
+        return Math.sqrt(semiPer * (semiPer - a) * (semiPer - b) * (semiPer - c));
     }
 
     /**
@@ -141,31 +124,22 @@ public class HomeTask1 {
      * @return является ли билет счастливым.
      */
     public static boolean isHappy(long ticket) {
-        if(ticket < 1){
+        if(ticket < 1 || ticket > 999999){
             return false;
         }
-        else if(ticket > 999999){
-            return false;
+        int leftSum = 0;
+        int rightSum = 0;
+        for (int a = 0; a < 3; a++) {
+            rightSum += (ticket % 10);
+            ticket /= 10;
         }
-        else {
-            int leftSum = 0;
-            int rightSum = 0;
-            for(int a = 0; a < 3; a++) {
-                rightSum += (ticket % 10);
-                ticket /= 10;
-            }
-            for(int a = 0; a < 3; a++) {
-                leftSum += (ticket % 10);
-                ticket /= 10;
-            }
-            if(leftSum == rightSum) {
-                return true;
-            }
-            else {
-                return false;
-            }
+        for (int a = 0; a < 3; a++) {
+            leftSum += (ticket % 10);
+            ticket /= 10;
         }
-    }
+        return leftSum == rightSum;
+        }
+
 
     public static void main(String[] args) {
         long number = -1234L;
@@ -180,7 +154,7 @@ public class HomeTask1 {
 //        System.out.println("Число " + number + " четное " + isEven(number));
         System.out.println("При катетах " + a +" и "+ b + " гипотенуза равна " + findHypotenuse(a, b));
         System.out.println("Периметр треугольника равен " + perimeter(a, b, c));
-        System.out.println("Площадь треугольника равна " + area(a, b));
+        System.out.println("Площадь треугольника равна " + area(3, 5));
         System.out.println(generateNumberFromRange(min, max) + " случайное число в диапазоне " + min + " - " + max);
         System.out.println("Cумма цифр числа = " + calculateSum(number));
         System.out.println("Элемент последовательности " + fibonacci(till));
